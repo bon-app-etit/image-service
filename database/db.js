@@ -12,17 +12,11 @@ db.once('open', function() {
   console.log("connected to the DB: ")
   });
 
-
-
-  
-
-
 const imagemodal = new Schema({
   restaurauntTitle: String,
   helpfull: Number,
   notHelpfull: Number,
   images: Array
-
 });
 
 //use for reference in seeding script
