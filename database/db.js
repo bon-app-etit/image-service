@@ -12,15 +12,31 @@ db.once('open', function() {
   console.log("connected to the DB: ")
   });
 
-const imagemodal = new Schema({
+const imageModal = new Schema({
   restaurauntTitle: String,
   helpfull: Number,
   notHelpfull: Number,
   images: Array
 });
 
-//use for reference in seeding script
+const getImages = () => {
+  imageModal.find()
+    .then(console.log('found images'))
+    .catch(console.log('cant find images'))
+}
+
+const getImageById = (id) => {
+  imageModal.findById(id)
+    .then(console.log(`found image by ${id}`))
+    .catch(console.log(`couldn't find image by ${id}`))
+}
+
+const postImage = (image) => {
+  image.save()
+    .then(console.log('image saved to database'));
+    .catch(console.log('image not saved by database'));
+}
 
 
 
-module.exports = mongoose.model("imagemodal" ,imagemodal);
+module.exports = {imageModal, getImages, getImageById, postImage}
