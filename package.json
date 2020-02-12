@@ -1,0 +1,51 @@
+{
+  "name": "photo-gallery-modal",
+  "version": "1.0.0",
+  "description": "> Hack Reactor Front End Capstone Project",
+  "main": "index.js",
+  "scripts": {
+    "seeding-script": "node ./database/seeding.js",
+    "react-dev": "webpack -w",
+    "start": "nodemon ./server/index.js",
+    "test": "jest",
+    "webpack-p": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TeamofThr33/photo-gallery-modal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TeamofThr33/photo-gallery-modal/issues"
+  },
+  "homepage": "https://github.com/TeamofThr33/photo-gallery-modal#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongo-seeding": "^3.4.0-alpha.1",
+    "mongoose": "^5.8.9",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-jest": "^25.1.0",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jest": "^25.1.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
