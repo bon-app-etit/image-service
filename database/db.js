@@ -27,8 +27,14 @@ const getImages = () => {
 
 const getImageById = (id) => {
   imageModal.findById(id)
-    .then(console.log(`found image by ${id}`))
-    .catch(console.log(`couldn't find image by ${id}`))
+    .then(data => 
+      {
+        console.log(data);
+       return data;
+      }
+    .catch(err => {
+      console.log(err);
+    })
 }
 
 const postImage = (image) => {
@@ -60,6 +66,5 @@ const deleteAllImages = () => {
     .then(console.log('deleted all images'))
     .catch(console.log('failed to delete all images'))
 }
-
 
 module.exports = {imageModal, getImages, getImageById, postImage, updateImage, partialUpdate, deleteImage, deleteAllImages}
