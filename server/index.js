@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const morgan = require('morgan');
-const imageModal = require('../database/db')
+const {imageModal, getImages, getImageById, postImage, updateImage, partialUpdate, deleteImage, deleteAllImages} = require('../database/db')
 const db = require('../database/db.js')
 const cors = require('cors');
 const port = 3004;
@@ -39,8 +39,7 @@ app.get('/images/:imageId', (req,res) => {
 app.post('/images', (req,res) => {
   const image = new imageModal(req.body);
   postImage(image)
-  image.save()
-    .then(item => {
+    .then(data => {
       res.status(200).send('item saved to database!')
     })
     .catch(err => {
@@ -54,22 +53,25 @@ app.put('/images/:imageId', (req,res) => {
   const id = req.params.imageId;
   //request body to update the information, and replace if there is a new one needed
   const image = new imageModal(req.body);
-  imageModal.update({image}, id)
-    .then(item => {
-      res.status(200)
-    })
+  updateImage(id,image)
+    .then(data => {res.status(200).send(`item with id: ${id} updated in database`)})
+    .catch(err => {res.status(500).send(`item with id: ${id} NOT updated in database`)})
 })
 
 //partial update with patch request
 app.patch('/images/:imageId', (req,res) => {
-  
+  const id = req.params.imageId;
+  const image = newImageModal(req.body);
+  partialUpdate(id,image)
+    .then(data => {res.status(200).send(`item with id: ${id}`)})
+    .catch(err => {res.status(500).send(`item with id ${id}`)})
 })
 
 //delete an item by imageId
 app.delete('/images/:imageId', (req,res) => {
   const id = req.params.productId;
-  imageModal.findAndModify(_id: id)
-  .then(item => {
+  deleteImage(_id: id)
+  .then(data => {
     res.status(200).status.send('item deleted from database');
   })
   .catch(err => {
@@ -79,8 +81,8 @@ app.delete('/images/:imageId', (req,res) => {
 
 //delete all images
 app.delete('/images', (req,res) => {
-  imageModal.remove()
-    .then(images => {
+  deleteAllImages()
+    .then(data => {
       res.status(200).send('deleted all images in collection');
     })
     .catch(err => {
