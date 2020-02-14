@@ -14,6 +14,7 @@ db.once('open', function() {
 
 const imageModal = new Schema({
   restaurantID: Number,
+  isOwner: Boolean,
   images: [{
     imageID: Number,
     imageString: String,
@@ -40,7 +41,7 @@ const getImageById = (id) => {
       {
         console.log(data);
         return data;
-      }
+      })
     .catch(err => {
       console.log(err);
     })
@@ -65,7 +66,7 @@ const partialUpdate = (id,image) => {
 }
 
 const deleteImage = (id) => {
-  imageModal.findAndModify(_id: id)
+  imageModal.findAndModify({_id: id})
     .then(console.log(`delete image at id: ${id}`))
     .catch(console.log(`failed to delete item with id ${id}`))
 }

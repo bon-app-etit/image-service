@@ -4,6 +4,7 @@ USE image_modal;
 
 CREATE TABLE restaurants (
     id SERIAL,
+    isOwner BOOLEAN,
     PRIMARY KEY(id)
 )
 
