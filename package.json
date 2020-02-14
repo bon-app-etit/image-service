@@ -1,7 +1,7 @@
 {
-  "name": "photo-gallery-modal",
+  "name": "image-service",
   "version": "1.0.0",
-  "description": "> Hack Reactor Front End Capstone Project",
+  "description": "> Hack Reactor System Design Capstone Project",
   "main": "index.js",
   "scripts": {
     "seeding-script": "node ./database/seeding.js",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TeamofThr33/photo-gallery-modal.git"
+    "url": "git+https://github.com/bon-app-etit/image-servicet"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TeamofThr33/photo-gallery-modal/issues"
+    "url": "https://github.com/bon-app-etit/image-service/issues"
   },
-  "homepage": "https://github.com/TeamofThr33/photo-gallery-modal#readme",
+  "homepage": "https://github.com/bon-app-etit/image-service#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "cors": "^2.8.5",
