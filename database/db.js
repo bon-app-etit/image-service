@@ -13,7 +13,19 @@ db.once('open', function() {
   });
 
 const imageModal = new Schema({
-  restaurantTitle: String,
+  restaurantID: Number,
+  images: [{
+    imageID: Number,
+    imageString: String,
+    imageDate: Date,
+    helpful: Number,
+    notHelpful: Number,
+    userID: Number,
+    userImage: String,
+    friends: Number,
+    stars: Number,
+    eliteNumber: Number,
+  }],
 });
 
 const getImages = () => {

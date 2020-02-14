@@ -13,10 +13,10 @@ CREATE TABLE images (
     imageDate DATE NOT NULL,
     helpful INT,
     notHelpful INT,
-    restId INT,
+    restaurantId INT,
     userID INT,
     PRIMARY KEY (id),
-    FOREIGN KEY(restID) REFERENCES restaurants(id)
+    FOREIGN KEY(restaurantID) REFERENCES restaurants(id)
     FOREIGN KEY(userID) REFERENCES images(id)
 )
 
