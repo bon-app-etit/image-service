@@ -13,10 +13,7 @@ db.once('open', function() {
   });
 
 const imageModal = new Schema({
-  restaurauntTitle: String,
-  helpfull: Number,
-  notHelpfull: Number,
-  images: Array
+  restaurantTitle: String,
 });
 
 const getImages = () => {
@@ -30,7 +27,7 @@ const getImageById = (id) => {
     .then(data => 
       {
         console.log(data);
-       return data;
+        return data;
       }
     .catch(err => {
       console.log(err);
