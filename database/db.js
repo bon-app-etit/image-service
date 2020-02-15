@@ -14,7 +14,7 @@ db.once('open', function() {
 
 const imageModal = new Schema({
   restaurantID: Number,
-  isOwner: Boolean,
+  hostID: Number,
   images: [{
     imageID: Number,
     imageString: String,
@@ -29,52 +29,54 @@ const imageModal = new Schema({
   }],
 });
 
-const getImages = () => {
+const getImages = (callback) => {
   imageModal.find()
-    .then(console.log('found images'))
+    .then((data => {
+      callback(null,data);
+    }))
     .catch(console.log('cant find images'))
 }
 
-const getImageById = (id) => {
+const getImageById = (id, callback) => {
   imageModal.findById(id)
     .then(data => 
       {
         console.log(data);
-        return data;
+        callback(null, data)
       })
     .catch(err => {
       console.log(err);
     })
 }
 
-const postImage = (image) => {
+const postImage = (image, callback) => {
   image.save()
-    .then(console.log('image saved to database'))
-    .catch(console.log('image not saved by database'))
+    .then( () => callback(null))
+    .catch( err => console.log(err))
 }
 
-const updateImage = (id,image) => {
-  imageModal.update({_id: id},{image}, {upsert:true})
-    .then(console.log(`update image at id: ${id}`))
-    .catch(console.log(`failed to update image at id ${id}`))
+const updateImage = (id, image, callback) => {
+  image.update({_id: id},{image}, {upsert:true})
+    .then( () => callback(null))
+    .catch(err => console.log(err))
 }
 
-const partialUpdate = (id,image) => {
-  imageModal.update({_id: id},{$set: image}, {upsert: true})
-    .then(console.log(`partial update at id: ${id}`))
-    .catch(console.log(`failed to update image at id ${id}`))
+const partialUpdate = (id,image, callback) => {
+  image.update({_id: id},{$set: image}, {upsert: true})
+    .then( () => callback(null))
+    .catch(err => console.log(err))  
 }
 
-const deleteImage = (id) => {
+const deleteImage = (id, callback) => {
   imageModal.findAndModify({_id: id})
-    .then(console.log(`delete image at id: ${id}`))
-    .catch(console.log(`failed to delete item with id ${id}`))
+    .then( () => callback(null) )
+    .catch(err => console.log(err))
 }
 
-const deleteAllImages = () => {
+const deleteAllImages = (callback) => {
   imageModal.remove()
-    .then(console.log('deleted all images'))
-    .catch(console.log('failed to delete all images'))
+    .then( () => callback(null) )
+    .catch(err => console.log(err))
 }
 
 module.exports = {imageModal, getImages, getImageById, postImage, updateImage, partialUpdate, deleteImage, deleteAllImages}

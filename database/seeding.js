@@ -32,7 +32,7 @@ const seeder = () => {
 for (var x = 0 ; x < 100; x++) {
 
     var imageModalInstance = new imagemodal({
-        restaurauntTitle: mockRestarauntNames[Math.floor(Math.random()* 12)],
+    restaurauntTitle: mockRestarauntNames[Math.floor(Math.random()* 12)],
       helpfull: helpfullNessRandomGenerator(),
       notHelpfull: helpfullNessRandomGenerator(),
       images: imagesArray()
