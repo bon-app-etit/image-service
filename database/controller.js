@@ -83,7 +83,7 @@ module.exports.controller = {
         })
     }
   },
-  user: {
+  users: {
     getAllUserImages: (req, res) => { 
         getUserImages((err, results) => {
           if(err) {

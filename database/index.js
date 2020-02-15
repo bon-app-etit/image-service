@@ -1,5 +1,4 @@
 const db = require('./db.js');
-const {imageModal, userInfo} = require('./db.js')
 //mongo db functions:
 //functions for restaurants
 const getImages = (callback) => {
@@ -104,5 +103,5 @@ const getImages = (callback) => {
       .catch(err => console.log(err))
   };
   
-  module.exports = { getImages, getImageById, postImage, updateImage, partialUpdateImage, deleteImage, deleteAllImages};
-  module.exports = { getUserImages, getUserImageById, postUserImage, updateUserImage, partialUpdateUserImage, deleteUserImage, deleteAllUserImages};
+  module.exports = {getImages, getImageById, postImage, updateImage, partialUpdateImage, deleteImage, deleteAllImages};
+  module.exports = {getUserImages, getUserImageById, postUserImage, updateUserImage, partialUpdateUserImage, deleteUserImage, deleteAllUserImages};
