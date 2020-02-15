@@ -14,7 +14,7 @@ db.once('open', function() {
 
 const imageModal = new Schema({
   restaurantID: Number,
-  hostID: Number,
+  ownerID: Number,
   images: [{
     imageID: Number,
     imageString: String,
@@ -25,9 +25,24 @@ const imageModal = new Schema({
     userImage: String,
     friends: Number,
     stars: Number,
-    eliteNumber: Number,
+    eliteYear: Number,
   }],
 });
+
+const userInfo = new Schema({
+  userID: Number,
+  userImage: String,
+  friends: Number,
+  stars: Number,
+  eliteYear: Number,
+  images: [{
+    imageID: Number,
+    imageString: String,
+    imageDate: Date,
+    helpful: Boolean,
+    notHelpful: Boolean
+  }]
+})
 
 const getImages = (callback) => {
   imageModal.find()

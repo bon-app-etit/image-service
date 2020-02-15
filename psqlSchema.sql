@@ -4,9 +4,9 @@ USE image_modal;
 
 CREATE TABLE restaurants (
     id SERIAL,
-    hostID INT,
+    ownerID INT,
     PRIMARY KEY(id),
-    FOREIGN KEY hostID REFERENCES users(id)
+    FOREIGN KEY ownerID REFERENCES users(id)
 )
 
 CREATE TABLE images (
@@ -27,7 +27,7 @@ CREATE TABLE users (
     userImage VARCHAR(30),
     friends INT NOT NULL,
     stars INT NOT NULL,
-    elite INT,
+    eliteYear INT,
     PRIMARY KEY (id)
 )
 

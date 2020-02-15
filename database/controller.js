@@ -1,6 +1,6 @@
 const {imageModal, getImages, getImageById, postImage, updateImage, partialUpdate, deleteImage, deleteAllImages} = require('../db.js');
 module.exports.controller = {
-    
+  restaurant: {
     getAllImages: (req, res) => { 
         getImages((err, results) => {
           if(err) {
@@ -79,5 +79,9 @@ module.exports.controller = {
           }
         })
     }
+  },
+  users: {
+    
+  }
 
 }

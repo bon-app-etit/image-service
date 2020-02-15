@@ -12,27 +12,50 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
 app.use(cors());
 
-//get all imageModal data (user and image data) for a restaurant based on restaurant ID.
-app.get('/restaurants/:restaurantID/images', controller.getAllImages);    
+//RESTAURANTS API ROUTES
+//get all image data (user info and image data) for a restaurant based on restaurant ID.
+app.get('/restaurants/:restaurantID/images', controller.restaurants.getAllImages);    
 
-//restaurant gets data 
-//get imageModal data (user and image data) for a restaurant based on image modal id for a restaurant based on restaurant ID.
-app.get('/restaurants/:restaurantID/images/:imageId', controller.getImagesById);
+//get image data (user info and image data) for a restaurant based on image modal id for a restaurant based on restaurant ID.
+app.get('/restaurants/:restaurantID/images/:imageID', controller.restaurants.getImagesById);
 
-//specific user posts a image by imageID.
-app.post('/restaurants/:restaurantID/users/:userID/images', controller.postImage);
+//post a image for a specific restaurant
+app.post('/restaurants/:restaurantID/images', controller.restaurants.postImage);
 
-//specific user updates a image by imageID.
-app.put('/restaurants/:restaurantID/users/:userID/images/:imageId', controller.updateImage)
+//update a image for a specific restaurant
+app.put('/restaurants/:restaurantID/images/:imageID', controller.restaurants.updateImage)
 
-//specific user partially updates a image or description by imageID.
-app.patch('/restaurants/:restaurantID/images/:imageId', controller.partialUpdateImage)
+//partially update a image for a specific restaurant .
+app.patch('/restaurants/:restaurantID/images/:imageID', controller.restaurants.partialUpdateImage)
 
 //delete an item by imageId
-app.delete('/restaurants/:restaurantID/images/:imageId', controller.deleteImage)
+app.delete('/restaurants/:restaurantID/images/:imageID', controller.restaurants.deleteImage)
 
 //delete all images
-app.delete('/restaurants/:restaurantID/images', controller.deleteAllImages)
+app.delete('/restaurants/:restaurantID/images', controller.restaurants.deleteAllImages)
+
+//USERS API ROUTES
+//get all image data (user info and image data) for a user
+app.get('/users/:userID/images', controller.users.getAllImages);
+
+//get image data (user info and image data) for a user based on image modal id for a restaurant based on restaurant ID.
+app.get('/users/:userID/images/:imageID', controller.users.getImagesById);
+
+//post a image for a user
+app.post('/users/:userID/images', controller.users.postImage);
+
+//update a image for a user
+app.put('/users/:userID/images/:imageID', controller.users.updateImage)
+
+//partially update a image for a user
+app.patch('/users/:userID/images/:imageID', controller.users.partialUpdateImage)
+
+//delete an item of a user
+app.delete('/users/:userID/images/:imageID', controller.users.deleteImage)
+
+//delete all images for a user
+app.delete('/users/:userID/images', controller.users.deleteAllImages)
+
 
 app.listen(port, function () {
     console.log(`listening on port ${port}`);
