@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const morgan = require('morgan');
-const db = require('../database/db.js')
+const db = require('../database/db.js');
 const cors = require('cors');
 const port = 3004;
 const controller = require('../database/controller.js');
@@ -36,25 +36,25 @@ app.delete('/restaurants/:restaurantID/images', controller.restaurants.deleteAll
 
 //USERS API ROUTES
 //get all image data (user info and image data) for a user
-app.get('/users/:userID/images', controller.users.getAllImages);
+app.get('/users/:userID/images', controller.users.getAllUserImages);
 
 //get image data (user info and image data) for a user based on image modal id for a restaurant based on restaurant ID.
-app.get('/users/:userID/images/:imageID', controller.users.getImagesById);
+app.get('/users/:userID/images/:imageID', controller.users.getUserImagesById);
 
 //post a image for a user
-app.post('/users/:userID/images', controller.users.postImage);
+app.post('/users/:userID/images', controller.users.postUserImage);
 
 //update a image for a user
-app.put('/users/:userID/images/:imageID', controller.users.updateImage)
+app.put('/users/:userID/images/:imageID', controller.users.updateUserImage)
 
 //partially update a image for a user
-app.patch('/users/:userID/images/:imageID', controller.users.partialUpdateImage)
+app.patch('/users/:userID/images/:imageID', controller.users.partialUpdateUserImage)
 
 //delete an item of a user
-app.delete('/users/:userID/images/:imageID', controller.users.deleteImage)
+app.delete('/users/:userID/images/:imageID', controller.users.deleteUserImage)
 
 //delete all images for a user
-app.delete('/users/:userID/images', controller.users.deleteAllImages)
+app.delete('/users/:userID/images', controller.users.deleteAllUserImages)
 
 
 app.listen(port, function () {

@@ -160,11 +160,6 @@ images = [
     rating: [INT NOT NULL],
     helpful: [BOOLEAN],
     notHelpful: [BOOLEAN],
-    userID: [INT NOT NULL],
-    userImage: [STRING NOT NULL],
-    friends: [INT NOT NULL],
-    stars: [INT NOT NULL],
-    eliteYear: [INT]
   }
 ]
 ```
@@ -183,12 +178,7 @@ image =
     imageDate: [DATE NOT NULL],
     rating: [INT NOT NULL],
     helpful: [BOOLEAN],
-    notHelpful: [BOOLEAN],
-    userID: [INT NOT NULL],
-    userImage: [STRING NOT NULL],
-    friends: [INT NOT NULL],
-    stars: [INT NOT NUL]L,
-    eliteYear: [INT]
+    notHelpful: [BOOLEAN]
   }
 ```
 
@@ -207,12 +197,7 @@ image =
     imageDate: [DATE NOT NULL],
     rating: [INT NOT NULL],
     helpful: [BOOLEAN],
-    notHelpful: [BOOLEAN],
-    userID: [INT NOT NULL],
-    userImage: [STRING NOT NULL],
-    friends: [INT NOT NULL],
-    stars: [INT NOT NUL]L,
-    eliteYear: [INT]
+    notHelpful: [BOOLEAN]
   }
 ```
 
@@ -231,13 +216,7 @@ image =
     imageDate: [DATE NOT NULL],
     rating: [INT NOT NULL],
     helpful: [BOOLEAN],
-    notHelpful: [BOOLEAN],
-    userID: [INT NOT NULL],
-    userImage: [STRING NOT NULL],
-    friends: [INT NOT NULL],
-    stars: [INT NOT NULL],
-    eliteYear: [INT]
-  }
+    notHelpful: [BOOLEAN]
 ```
 
 * **URL**: /users/userID/images/:imageID
@@ -254,12 +233,7 @@ image =
     imageDate: [DATE NOT NULL],
     rating: [INT NOT NULL],
     helpful: [BOOLEAN],
-    notHelpful: [BOOLEAN],
-    userID: [INT NOT NULL],
-    userImage: [STRING NOT NULL],
-    friends: [INT NOT NULL],
-    stars: [INT NOT NULL],
-    eliteYear: [INT]
+    notHelpful: [BOOLEAN]
   }
 ```
   Include any of the properties in the request body to partially update
