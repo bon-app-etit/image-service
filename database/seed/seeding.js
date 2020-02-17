@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const db = require('./db.js');
-const imagemodal = require('../database/db')
+const db = require('../db.js');
+const imagemodal = require('../database/seed/db.js')
 
 
 
@@ -32,7 +32,7 @@ const seeder = () => {
 for (var x = 0 ; x < 100; x++) {
 
     var imageModalInstance = new imagemodal({
-        restaurauntTitle: mockRestarauntNames[Math.floor(Math.random()* 12)],
+    restaurauntTitle: mockRestarauntNames[Math.floor(Math.random()* 12)],
       helpfull: helpfullNessRandomGenerator(),
       notHelpfull: helpfullNessRandomGenerator(),
       images: imagesArray()

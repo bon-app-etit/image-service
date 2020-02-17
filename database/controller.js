@@ -1,67 +1,168 @@
+const {getImages, getImageById, postImage, updateImage, partialUpdateImage, deleteImage, deleteAllImages} = require('../db.js');
+const {getUserImages, getUserImageById, postUserImage, updateUserImage, partialUpdateUserImage, deleteUserImage, deleteAllUserImages} = require('../db.js');
+const {imageModal, userInfo} = require('./db.js');
+
 module.exports.controller = {
+  restaurant: {
     getAllImages: (req, res) => { 
-        getImages()
-      .then(images => {
-        res.status(200).json({images})
-      })
-      .catch(err => {
-        res.status(200).send('unable to get all images');
-      })
+        getImages((err, results) => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send(results);
+          }
+        })
     },
     getImagesById: (req,res) => {
         const id = req.params.imageId;
-        getImageById(id)
-          .then(image => {
-            res.status(200).send(image);
-          })
-          .catch(err => {
-            res.status(500).send(`unable to get item with id: ${id} from database`)
-          })
+        getImageById(id, (err, result) => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send(result)
+          }
+        })
+          
     },
     postImage: (req,res) => {
         const image = new imageModal(req.body);
-        postImage(image)
-          .then(data => {
-            res.status(200).send('item saved to database!')
-          })
-          .catch(err => {
-            res.status(500).send('unable to save to database!')
-          })
+        postImage(image, err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send();
+          }
+        })
     },
     updateImage: (req,res) => {
-        //id to find entry to update
-        const id = req.params.imageId;
-        //request body to update the information, and replace if there is a new one needed
-        const image = new imageModal(req.body);
-        updateImage(id,image)
-          .then(data => {res.status(200).send(`item with id: ${id} updated in database`)})
-          .catch(err => {res.status(500).send(`item with id: ${id} NOT updated in database`)})
+      const id = req.params.imageId;
+      const image = new imageModal(req.body);
+        updateImage(id, image, err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            console.log(`image successfully updated at index: ${id}`);
+            res.status(200).send();
+          }
+        })
     },
     partialUpdateImage: (req,res) => {
         const id = req.params.imageId;
-        const image = newImageModal(req.body);
-        partialUpdate(id,image)
-          .then(data => {res.status(200).send(`item with id: ${id}`)})
-          .catch(err => {res.status(500).send(`item with id ${id}`)})
+        const image = new imageModal(req.body);
+        partialUpdateImage(id,image, err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else{
+            res.status(200).send();
+          }
+        })
     },
     deleteImage: (req,res) => {
         const id = req.params.productId;
-        deleteImage(id)
-        .then(data => {
-          res.status(200).status.send('item deleted from database');
-        })
-        .catch(err => {
-          res.status(500).send('unable to delete item from database')
+        deleteImage(id, err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send();
+          }
         })
     },
     deleteAllImages: (req,res) => {
-        deleteAllImages()
-          .then(data => {
-            res.status(200).send('deleted all images in collection');
-          })
-          .catch(err => {
-            res.status(500).send('unable to delete all images from the collection');
-          })
+        deleteAllImages(err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send();
+          }
+        })
     }
+  },
+  users: {
+    getAllUserImages: (req, res) => { 
+        getUserImages((err, results) => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send(results);
+          }
+        })
+    },
+    getUserImagesById: (req,res) => {
+        const id = req.params.imageId;
+        getUserImageById(id, (err, result) => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send(result)
+          }
+        })
+          
+    },
+    postUserImage: (req,res) => {
+        const image = new userInfo(req.body);
+        postUserImage(image, err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send();
+          }
+        })
+    },
+    updateUserImage: (req,res) => {
+      const id = req.params.imageId;
+      const image = new userInfo(req.body);
+        updateUserImage(id, image, err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send();
+          }
+        })
+    },
+    partialUpdateUserImage: (req,res) => {
+        const id = req.params.imageId;
+        const image = new userInfo(req.body);
+        partialUpdateUserImage(id,image, err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else{
+            res.status(200).send();
+          }
+        })
+    },
+    deleteUserImage: (req,res) => {
+        const id = req.params.productId;
+        deleteUserImage(id, err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send();
+          }
+        })
+    },
+    deleteAllUserImages: (req,res) => {
+        deleteAllUserImages(err => {
+          if(err) {
+            console.log(err);
+            res.status(500).send();
+          } else {
+            res.status(200).send();
+          }
+        })
+    }
+  }
 
 }

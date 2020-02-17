@@ -4,9 +4,10 @@ USE image_modal;
 
 CREATE TABLE restaurants (
     id SERIAL,
-    isOwner BOOLEAN,
-    PRIMARY KEY(id)
-)
+    ownerID INT,
+    PRIMARY KEY(id),
+    FOREIGN KEY ownerID REFERENCES users(id)
+);
 
 CREATE TABLE images (
     id SERIAL,
@@ -19,15 +20,22 @@ CREATE TABLE images (
     PRIMARY KEY (id),
     FOREIGN KEY(restaurantID) REFERENCES restaurants(id)
     FOREIGN KEY(userID) REFERENCES images(id)
-)
+);
 
 CREATE TABLE users (
     id SERIAL,
     userImage VARCHAR(30),
     friends INT NOT NULL,
     stars INT NOT NULL,
-    elite20 INT,
+    eliteYear INT,
     PRIMARY KEY (id)
-)
+);
 
+CREATE TABLE helpful (
+    helpful boolean,
+    userID INT, 
+    imageID INT,
+    FOREIGN KEY (userID) REFERENCES users(id),
+    FOREIGN KEY (imageID) REFERENCES images(id)
+);
 
