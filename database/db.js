@@ -19,9 +19,9 @@ const imageModal = new Schema({
     imageID: Number,
     imageString: String,
     imageDate: Date,
-    helpful: [{user: String}],
-    notHelpful: [{user: String}],
-    userID: Number,
+    helpful: [{userName: String}],
+    notHelpful: [{userName: String}],
+    imageUserID: Number,
     userImage: String,
     friends: Number,
     stars: Number,
@@ -35,12 +35,12 @@ const userInfo = new Schema({
   friends: Number,
   stars: Number,
   eliteYear: Number,
+  helpful: [{restaurantID: Number}],
+  notHelpful:[{restaurantID: Number}],
   images: [{
     imageID: Number,
     imageString: String,
-    imageDate: Date,
-    helpful: Boolean,
-    notHelpful: Boolean
+    imageDate: Date
   }]
 });
 

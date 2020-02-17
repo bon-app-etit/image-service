@@ -45,6 +45,7 @@ module.exports.controller = {
             console.log(err);
             res.status(500).send();
           } else {
+            console.log(`image successfully updated at index: ${id}`);
             res.status(200).send();
           }
         })

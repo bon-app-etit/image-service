@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const db = require('./db.js');
-const imagemodal = require('../database/db')
+const db = require('../db.js');
+const imagemodal = require('../database/seed/db.js')
 
 
 

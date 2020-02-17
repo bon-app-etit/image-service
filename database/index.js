@@ -28,7 +28,7 @@ const getImages = (callback) => {
   };
   
   const updateImage = (id, image, callback) => {
-    image.update({_id: id},{image}, {upsert:true})
+    image.update({_id: id},image, {upsert:true})
       .then( () => callback(null))
       .catch(err => console.log(err))
   };
